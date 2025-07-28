@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Unminify JavaScript Code Online | JS Beautifier - Unminify-JS.com</title>
+
+  <meta name="description" content="Instantly unminify and beautify JavaScript code online. Fast, secure, and browser-based JS unminifier. 100% free tool to format minified JavaScript using js-beautify." />
+
+  <meta name="keywords" content="unminify javascript, javascript unminifier, js beautifier, online js formatter, free javascript unminify tool, js code beautifier, unminify-js.com" />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Unminify-JS.com" />
+  <meta name="language" content="en" />
+  <meta name="theme-color" content="#ffd43b" />
+  <link rel="canonical" href="https://unminify-js.com/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon/favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="imgs/favicon/apple-icon-180x180.png" />
+  <link rel="manifest" href="imgs/favicon/manifest.json" />
+
+  <!-- Open Graph for Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Unminify JavaScript Online - Free JS Formatter" />
+  <meta property="og:description" content="Free online JavaScript unminifier. Paste your minified JS code and instantly get clean, readable code. Fast, private, browser-based." />
+  <meta property="og:url" content="https://unminify-js.com/" />
+  <meta property="og:image" content="https://unminify-js.com/unminify-preview.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free JavaScript Unminifier Tool - Unminify-JS.com" />
+  <meta name="twitter:description" content="Unminify JavaScript online for free. Clean up messy minified JS code with one click. No upload needed." />
+  <meta name="twitter:image" content="https://unminify-js.com/unminify-preview.png" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Unminify-JS.com",
+    "url": "https://unminify-js.com/",
+    "description": "Free tool to unminify JavaScript code instantly using js-beautify. Secure and browser-based, no upload required.",
+    "inLanguage": "en"
+  }
+  </script>
+
+
+<style>
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}    
+body {
+font-family: 'arial', sans-serif;
+word-spacing: 1px;
+background: #ffffff;
+}
+nav {
+background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.nav-links{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0 20px;
+max-width: 800px;
+margin: 0 auto;
+}
+.nav-right a{
+color: #363636;
+text-decoration: none;
+font-size: 0.9rem;
+}
+.nav-right a:hover{
+color: #ffd43b;
+}
+.logo img {
+width: 180px;
+}
+.header-content{
+margin: 25px auto !important;
+}
+.container {
+max-width: 800px;
+margin: 0 auto;
+text-align: center;
+}
+.split-layout {
+display: flex;
+gap: 10px;
+}
+.split-layout #inputEditor,
+.split-layout #outputEditor {
+display: block !important;
+width: 50%;
+height: 300px;
+}
+
+.split-layout .editor-column {
+text-align: left;
+width: 50%;
+}
+.split-layout #outputEditor,
+.split-layout #inputEditor {
+height: 250px;
+width: 100%;
+}
+.error {
+color: red;
+font-size: 0.9rem;
+display: none;
+text-align: left;
+}
+textarea {
+width: 100%;
+height: 250px;
+font-size: 12px;
+font-family: monospace;
+padding: 10px;
+border: 1px solid lightgrey;
+border-radius: 0 0 4px 4px;
+resize: none;
+color: gray;
+
+
+}
+textarea::-webkit-resizer {
+display: none;
+}
+
+.tab-buttons, .layout-buttons{
+display: flex;
+z-index: 99;
+}
+.tab-buttons button, .layout-buttons button, #tabOutput-splitView{
+background: none;
+max-height: 30px;
+min-height: 30px;
+border: 1px solid lightgrey;
+padding: 5px 10px;
+border-bottom: none;
+cursor: pointer;
+}
+.layout-buttons button, #tabOutput-splitView{
+border-radius: 4px 4px 0 0;
+}
+#outputColumn textarea {
+background-color: #f5f5f5;
+}
+.split-layout #inputColumn textarea{
+border-radius: 0 4px 0 0;
+}
+.split-layout #outputColumn {
+margin-top: -30px;
+}
+.tab-buttons #tabInput{
+background: #f5f5f5;
+border-radius: 4px 0 0 0;
+}
+.tab-buttons #tabOutput{
+border-radius: 0 4px 0 0;
+
+}
+.btns-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 5px;
+}
+
+.btns-container button {
+padding: 7px 6px;
+border: none;
+border-radius: 2px;
+cursor: pointer;
+font-size: 0.8rem;
+font-weight: 300;
+display: flex;
+justify-content: center;
+gap: 2px;
+align-items: center;
+}
+#unminifyBtn{
+font-size: 0.9rem;
+}
+.btns-box1{
+display: flex;
+justify-content: center;
+}
+.btns-container .btns-box1 button{
+width: 150px;
+background-color: #ffd43b;
+}
+.file-btn {
+display: inline-block;
+background-color: #f5f5f5;
+padding: 7px 14px;
+font-weight: 300;
+color: #000;
+border: none;
+border-radius: 2px;
+cursor: pointer;
+transition: 0.3s;
+position: relative;
+overflow: hidden;
+}
+.file-btn input[type="file"] {
+position: absolute;
+left: 0;
+top: 0;
+opacity: 0;
+cursor: pointer;
+height: 100%;
+width: 100%;
+}
+#copyBtn{
+width: 150px;
+}
+.byte-indicator {
+position: absolute;
+bottom: 0;
+right: 0;
+font-size: 0.7rem;
+background: #0000005b;
+border-radius: 0 0 4px 0;
+padding: 5px 10px;
+color: #fff;
+pointer-events: none;
+z-index: 10;
+}
+
+.editor-column {
+position: relative;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+}
+input[type=number] {
+-moz-appearance: textfield;
+padding: 5px 0;
+text-align: center;
+margin-left: 5px;
+max-width: 25px;
+max-height: 25px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 0.8rem;
+transition: .3s;
+border: 1px solid #ffd43b;
+font-weight: 300;
+}
+input:focus, textarea:focus {
+outline: none;
+box-shadow: none;
+}
+label {
+font-size: 0.8rem;
+color: #363636;
+margin-left: 10px;
+}
+.btns-box2{
+display: flex;
+justify-content: right;
+gap: 10px;
+align-items: center;
+}
+.btns-container .btns-box2 button{
+background-color: #f5f5f5;
+}
+.btns-container button:hover, .file-btn:hover {
+background: #dedddd;
+}
+.btns-box1 button:hover{
+background-color: #eec42d;
+}
+h1, h2{
+font-size: 1.4rem;
+color: #363636;
+font-weight: 300;
+
+}
+p {
+font-size: 0.9rem;
+color: #363636;
+line-height: 25px;
+
+}
+.details-box{
+margin-top: 50px;
+text-align: left;
+/* text-align: justify; */
+}
+.details-box h2 {
+margin-top: 20px;
+margin-bottom: 10px;
+}
+
+.line-numbered {
+counter-reset: line;
+white-space: pre;
+}
+.line-numbered::before {
+content: counter(line);
+counter-increment: line;
+}
+
+
+.hide{
+display: none !important;
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 0 15px;
+  }
+  .editor-column {
+    width: 100%;
+  }
+  .split-layout {
+    flex-direction: column;
+  }
+  .split-layout #inputColumn, .split-layout #outputColumn {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .btns-box2 button, .file-btn {
+    font-size: 0;
+    padding: 7px;
+    width: 40px !important;
+  }
+
+  .btns-box2 button img, .file-btn img {
+    width: 20px;
+    height: auto;
+  }
+  input[type=number]{
+    margin-left: 0;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+<div class="nav-links">
+<div class="nav-left">
+<a href="index.html" class="logo"><img src="imgs/unminify-js-logo.webp" alt="unminify-js.com logo"></a>
+</div>
+<div class="nav-right">
+<a href="#benefits" class="nav-item">Benefits ❤️</a>
+</div>
+</div>
+</nav>
+<div class="container header-content">
+  <h1>Free Online JavaScript Unminifier Tool</h1>
+  <p>Unminify and beautify your compressed JavaScript code instantly using our fast, browser-based JS formatter. No signup, no uploads 100% free.</p>
+</div>
+</div>
+</header>
+
+<main>
+<section class="container">
+<div style="display: flex; justify-content: space-between; min-height: 30px; max-height:30px;">
+<div class="tab-buttons">
+<button id="tabInput" onclick="showTab('input')">Input</button>
+<button id="tabOutput" onclick="showTab('output')" style="border-left: none;">Output</button>
+</div>
+<div class="layout-buttons">
+<button id="singleBtn" onclick="setLayout('single')" style="display: none;">Single View</button>
+<button id="splitBtn" onclick="setLayout('dual')">Split View</button>
+</div>
+</div>
+
+<div id="editorWrapper">
+<div class="editor-column" id="inputColumn">
+<textarea id="inputEditor" placeholder="// Paste or type your minified JS code here..."></textarea>
+<div id="inputSize" class="byte-indicator hide">0 Bytes</div>
+</div>
+
+<div class="editor-column" id="outputColumn">
+<button id="tabOutput-splitView" onclick="showTab('output')" style="display: none;">Output</button>
+<textarea id="outputEditor" placeholder="// Your unminified JS code will appear here..." style="display: none;"></textarea>
+<div id="outputSize" class="byte-indicator hide">0 Bytes</div>
+</div>
+</div>
+
+<div class="btns-container">
+<div class="btns-box1">
+<button id="unminifyBtn" onclick="unminify()" aria-label="Unminify Code">Unminify</button>
+<label for="tabSizeSelector">Tab Size:
+<input type="number" id="tabSizeSelector" value="4" min="1" max="8" style="width: 50px;" onchange="updateTabSize(this.value)">
+</label>
+</div>
+<div class="btns-box2">
+<button id="downloadBtn" onclick="saveCode()" style="display:none;"><img src="imgs/download.svg" width="15px" alt="download unminified code in javascript file button"> Download</button>
+<label class="file-btn"><img src="imgs/upload.svg" width="15px" alt="select javascript file for unminification"> Select File<input type="file" accept=".js" onchange="loadCode(event)"></label>
+<input type="file" accept=".js" onchange="loadCode(event)" style="display: none;">
+<button id="copyBtn" onclick="copyCode()" aria-label="Copy Output"><img src="imgs/copy.svg" width="15px" alt="copy unminified code"> Copy Output</button>
+<button onclick="clearCode()"><img src="imgs/clear.svg" width="15px" alt="clear input box"> Clear</button>
+</div>
+</div>
+<div class="error" id="errorMsg" aria-live="polite">Error in javascript code</div>
+</section>
+
+<section class="container details-box">
+<h2>How to Use This Online JavaScript Unminifier</h2>
+<p>Using this free JavaScript Unminifier is quick and easy. Just paste your minified JS code into the input box, click the <strong>"Unminify"</strong> button, and get beautifully formatted JavaScript code instantly. This tool uses the powerful open-source <code>js-beautify</code> engine, which adds proper indentation, spacing, and line breaks to make your code readable. Everything runs in your browser, ensuring speed, privacy, and no data transfer to any server.</p>
+
+<h2>Why Unminify JavaScript Code?</h2>
+<p>Minified JavaScript is often difficult to read, as it removes all unnecessary characters like spaces, line breaks, and variable names to reduce file size. This is great for performance, but not for debugging or learning. By unminifying JavaScript, developers can clearly understand how a script works, troubleshoot bugs, or learn from other developers’ code. Whether you're optimizing your own code or analyzing third-party scripts, unminifying helps you get full visibility into the logic.</p>
+
+<h2 id="benefits">Benefits of Our Browser-Based JavaScript Beautifier</h2>
+<p>This JS Unminifier tool is designed for speed, simplicity, and complete privacy. Because it works entirely in your browser, your code is never sent to any external server, making it 100% secure. It’s also lightning-fast since there’s no waiting for uploads or processing delays. Whether you're working on large projects or quick edits, this beautifier keeps your workflow smooth and efficient without compromising security or performance.</p>
+
+<h2>JS Beautifier for Students, Developers, and Learners</h2>
+<p>This tool is perfect for anyone working with JavaScript. Students can use it to study well-written code examples, developers can debug compressed scripts, and hobby coders can improve their understanding of JavaScript structure. It makes messy one-line code human-friendly by reformatting functions, loops, and objects saving time and reducing eye strain. Plus, it’s free and works on any modern device or browser without setup.</p>
+
+<h2>Advanced JavaScript Formatting Without a Code Editor</h2>
+<p>Not everyone wants to open a full code editor just to format a single JS file. With this online JavaScript Beautifier, you can instantly convert compressed scripts into structured code right from your browser. No installation, no login, and no learning curve just paste, click, and you're done. It also supports large files and handles tricky syntax gracefully, making it ideal for both beginners and pros looking for quick formatting.</p>
+</section>
+</main>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Unminify JavaScript Code",
+  "operatingSystem": "All",
+  "applicationCategory": "DeveloperApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "browserRequirements": "Requires JavaScript",
+  "description": "Unminify minified JavaScript code online for free using a secure, fast, browser-based JS beautifier tool.",
+  "url": "https://unminify-js.com"
+}
+</script>
+
+<footer style="text-align:center; padding:20px 0; font-size:0.8rem; color:#888;">
+  © 2025 <a href="https://unminify-js.com" style="color: #888;">Unminify-JS.com</a> - All rights reserved.
+  <p style="font-size: 0.7rem; color: #aaa;">Built using open-source tools like js-beautify. This site helps developers instantly unminify JavaScript code online.</p>
+  <p style="font-size: 0.7rem; color: #aaa;">No file uploads. Fully client-side. Fast & private.</p>
+</footer>
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/js-beautify@1.14.0/js/lib/beautify.js"></script>
+<script>
+let currentTab = 'input';
+let view = 'single';
+let canCopy = true;
+const input = document.getElementById("inputEditor");
+const error = document.getElementById("errorMsg");
+const unminifyBtn = document.getElementById("unminifyBtn");
+
+function sanitizeInput(code) {
+    return code.replace(/<\/?script[^>]*>/gi, '');
+}
+function isJavaScript(code) {
+    if (code.trim().startsWith("<") || code.trim().endsWith(">")) return false;
+    return /[{}();=]/.test(code);
+}
+function showTab(tab) {
+    currentTab = tab;
+    const inputEditor = document.getElementById("inputEditor");
+    const outputEditor = document.getElementById("outputEditor");
+    const tabInput = document.getElementById("tabInput");
+    const tabOutput = document.getElementById("tabOutput");
+    const inputSize = document.getElementById("inputSize");
+    const outputSize = document.getElementById("outputSize");
+
+    inputEditor.style.display = tab === 'input' || view === 'dual' ? 'block' : 'none';
+    outputEditor.style.display = tab === 'output' || view === 'dual' ? 'block' : 'none';
+
+    tabInput.style.background = tab === 'input' ? '#f5f5f5' : '#fff';
+    tabOutput.style.background = tab === 'output' ? '#f5f5f5' : '#fff';
+
+    if (view === 'dual') {
+        inputSize.classList.remove("hide");
+        outputSize.classList.remove("hide");
+    } else {
+        tab === 'input' ? inputSize.classList.remove("hide") : inputSize.classList.add("hide");
+        tab === 'output' ? outputSize.classList.remove("hide") : outputSize.classList.add("hide");
+    }
+}
+input.addEventListener("input", () => {
+    let code = input.value;
+    code = sanitizeInput(code);
+    input.value = code;
+
+    if (code.trim() === '') {
+        error.style.display = "none";
+        unminifyBtn.disabled = true;
+    } else if (!isJavaScript(code)) {
+        error.style.display = "block";
+        unminifyBtn.disabled = true;
+    } else {
+        error.style.display = "none";
+        unminifyBtn.disabled = false;
+    }
+});
+
+function unminify() {
+    var byteIndicator = document.querySelectorAll(".byte-indicator");
+    byteIndicator.forEach(i => i.classList.remove("hide"));
+
+    const inputRaw = document.getElementById("inputEditor").value;
+    const sanitized = sanitizeInput(inputRaw);
+    const tabSize = parseInt(document.getElementById("tabSizeSelector").value);
+
+    const output = js_beautify(sanitized, {
+        indent_size: tabSize,
+        space_in_empty_paren: true
+    });
+
+    document.getElementById("outputEditor").value = output;
+    updateByteIndicators();
+    showTab('output');
+    document.getElementById("downloadBtn").style.display = "inline-block";
+}
+
+function clearCode() {
+    document.getElementById("inputEditor").value = '';
+    document.getElementById("outputEditor").value = '';
+    document.getElementById("unminifyBtn").disabled = true;
+    showTab('input');
+    var byteIndicator = document.querySelectorAll(".byte-indicator");
+    byteIndicator.forEach(i => i.classList.remove("hide"));
+    updateByteIndicators()
+}
+
+function copyCode() {
+    if (!canCopy) return;
+
+    const text = document.getElementById("outputEditor").value;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById("copyBtn");
+        if (window.innerWidth > 600) {
+        btn.textContent = "Copied!";
+        
+        canCopy = false;
+
+        setTimeout(() => {
+            btn.innerHTML = "<img src='copy.svg' width='15px' alt='copy unminified code'> Copy Output";
+            btn.disabled = false;
+            canCopy = true;
+        }, 1000);
+      }
+    });
+}
+
+function updateTabSize(value) {
+    const size = parseInt(value);
+}
+
+function setLayout(type) {
+    const wrapper = document.getElementById("editorWrapper");
+    const tabButtons = document.querySelector(".tab-buttons");
+    const tabOutputMain = document.getElementById("tabOutput");
+    const tabOutputSplit = document.getElementById("tabOutput-splitView");
+    const singleBtn = document.getElementById('singleBtn');
+    const splitBtn = document.getElementById('splitBtn');
+    view = type;
+    if (type === 'dual') {
+        wrapper.classList.add("split-layout");
+        tabOutputMain.style.display = "none";
+        tabOutputSplit.style.display = "block";
+        splitBtn.style.display = "none";
+        singleBtn.style.display = "inline-block";
+        showTab(currentTab);
+    } else {
+        wrapper.classList.remove("split-layout");
+        tabButtons.style.display = "flex";
+        tabOutputMain.style.display = "inline-block";
+        tabOutputSplit.style.display = "none";
+        singleBtn.style.display = "none";
+        splitBtn.style.display = "inline-block";
+        showTab(currentTab);
+    }
+}
+
+function updateByteIndicators() {
+    const inputBytes = new Blob([document.getElementById("inputEditor").value]).size;
+    const outputBytes = new Blob([document.getElementById("outputEditor").value]).size;
+    document.getElementById("inputSize").innerText = `${inputBytes} Bytes`;
+    document.getElementById("outputSize").innerText = `${outputBytes} Bytes`;
+}
+
+function saveCode() {
+    const code = document.getElementById('outputEditor').value;
+    const blob = new Blob([code], {
+        type: 'text/javascript'
+    });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'unminified-code.js';
+    a.click();
+}
+
+function loadCode(event) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const input = e.target.result;
+        document.getElementById('inputEditor').value = sanitizeInput(input);
+        checkInputType(input);
+        updateByteIndicators();
+    };
+    reader.readAsText(event.target.files[0]);
+}
+
+function checkInputType(inputCode) {
+    const unminifyBtn = document.getElementById("unminifyBtn");
+    if (!isJavaScript(inputCode)) {
+        unminifyBtn.disabled = true;
+    } else {
+        unminifyBtn.disabled = false;
+    }
+}
+document.getElementById("inputEditor").addEventListener("input", function() {
+    updateByteIndicators();
+    checkInputType(this.value);
+});
+document.getElementById("outputEditor").addEventListener("input", updateByteIndicators);
+window.addEventListener("load", () => {
+    updateByteIndicators();
+    showTab('input');
+    if (window.innerWidth < 600) {
+        setLayout('single');
+        document.getElementById('splitBtn').style.display = 'none';
+    }
+});
+</script>
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "FAQPage",
+"mainEntity": [{
+"@type": "Question",
+"name": "Can this tool unminify obfuscated JavaScript?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "It can format and beautify code, but advanced obfuscation may need manual cleanup."
+}
+}, {
+"@type": "Question",
+"name": "Is my code safe?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Yes! All code is processed in your browser. Nothing is uploaded or stored."
+}
+}]
+}
+</script>
+</body>
+</html>
