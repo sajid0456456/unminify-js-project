@@ -4,48 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Unminify JavaScript Code Online | JS Beautifier - Unminify-JS.com</title>
-
-  <meta name="description" content="Instantly unminify and beautify JavaScript code online. Fast, secure, and browser-based JS unminifier. 100% free tool to format minified JavaScript using js-beautify." />
-
-  <meta name="keywords" content="unminify javascript, javascript unminifier, js beautifier, online js formatter, free javascript unminify tool, js code beautifier, unminify-js.com" />
+  <title>Unminify JS, HTML, CSS, JSON, XML Code Online | Free Code Beautifier</title>
+  <meta name="description" content="Unminify JS, beautify HTML, format CSS, parse JSON and XML securely in your browser. Free, fast, and private code beautifier powered by js-beautify and vkbeautify." />
 
   <meta name="robots" content="index, follow" />
-  <meta name="author" content="Unminify-JS.com" />
-  <meta name="language" content="en" />
+  <meta name="author" content="codeunminifier.com" />
   <meta name="theme-color" content="#ffd43b" />
-  <link rel="canonical" href="https://unminify-js.com/" />
+  <link rel="canonical" href="https://codeunminifier.com/" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon/favicon-32x32.png" />
-  <link rel="apple-touch-icon" href="imgs/favicon/apple-icon-180x180.png" />
-  <link rel="manifest" href="imgs/favicon/manifest.json" />
+  <link rel="apple-touch-icon" href="imgs/favicon/favicon-32x32.png" />
 
-  <!-- Open Graph for Social Sharing -->
+  <!---Open Graph for Social Sharing -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Unminify JavaScript Online - Free JS Formatter" />
-  <meta property="og:description" content="Free online JavaScript unminifier. Paste your minified JS code and instantly get clean, readable code. Fast, private, browser-based." />
-  <meta property="og:url" content="https://unminify-js.com/" />
-  <meta property="og:image" content="https://unminify-js.com/unminify-preview.png" />
+  <meta property="og:title" content="Unminify JS, HTML, CSS, JSON, XML Code Online | Free Code Beautifier" />
+<meta property="og:description" content="Beautify JavaScript, HTML, CSS, JSON, and XML code online in your browser. Instant formatting using js-beautify and vkbeautify. No uploads required." />
+  <meta property="og:site_name" content="Code Unminifier" />
+  <meta property="og:url" content="https://codeunminifier.com/" />
+  <meta property="og:image" content="https://codeunminifier.com/unminify-preview.png" />
+  <meta property="og:image:alt" content="Preview of the code unminifier website interface" />
+
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Free JavaScript Unminifier Tool - Unminify-JS.com" />
-  <meta name="twitter:description" content="Unminify JavaScript online for free. Clean up messy minified JS code with one click. No upload needed." />
-  <meta name="twitter:image" content="https://unminify-js.com/unminify-preview.png" />
+  <meta name="twitter:title" content="Unminify Code Online - Beautify Any Code Instantly" />
+  <meta name="twitter:description" content="Beautify JS, HTML, CSS, JSON, XML instantly with our browser-based unminifier." />
+  <meta name="twitter:image" content="https://codeunminifier.com/unminify-preview.png" />
 
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Unminify-JS.com",
-    "url": "https://unminify-js.com/",
-    "description": "Free tool to unminify JavaScript code instantly using js-beautify. Secure and browser-based, no upload required.",
-    "inLanguage": "en"
-  }
-  </script>
 
+  <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -53,6 +41,9 @@ box-sizing: border-box;
 margin: 0;
 padding: 0;
 }    
+ *:focus {
+      outline: 2px solid #ffd43b;
+    }
 body {
 font-family: 'arial', sans-serif;
 word-spacing: 1px;
@@ -79,11 +70,9 @@ color: #363636;
 text-decoration: none;
 font-size: 0.9rem;
 }
-.nav-right a:hover{
-color: #ffd43b;
-}
 .logo img {
-width: 180px;
+width: 240px;
+margin: 10px 0;
 }
 .header-content{
 margin: 25px auto !important;
@@ -113,29 +102,22 @@ width: 50%;
 height: 250px;
 width: 100%;
 }
-.error {
-color: red;
-font-size: 0.9rem;
-display: none;
-text-align: left;
-}
 textarea {
 width: 100%;
 height: 250px;
 font-size: 12px;
-font-family: monospace;
+  font-family: 'PT Mono', monospace;
 padding: 10px;
 border: 1px solid lightgrey;
 border-radius: 0 0 4px 4px;
 resize: none;
 color: gray;
+overflow-x: auto;
+white-space: pre;
+word-wrap: normal;
 
 
 }
-textarea::-webkit-resizer {
-display: none;
-}
-
 .tab-buttons, .layout-buttons{
 display: flex;
 z-index: 99;
@@ -294,12 +276,10 @@ p {
 font-size: 0.9rem;
 color: #363636;
 line-height: 25px;
-
 }
 .details-box{
 margin-top: 50px;
 text-align: left;
-/* text-align: justify; */
 }
 .details-box h2 {
 margin-top: 20px;
@@ -314,8 +294,30 @@ white-space: pre;
 content: counter(line);
 counter-increment: line;
 }
+.input-type-text{
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+color: #36363698;
+line-height: 25px;
+}
+#forceLang{
+  border: none;
+  font-size: 0.9rem;
+color: #363636;
+line-height: 25px;
+text-align: center;
+border-left: 1px solid lightgrey;
+padding-left: 3px;
+margin-left: 3px;
+cursor: pointer;
 
+}
+#forceLang option{
+letter-spacing: -1px;
+cursor: pointer;
 
+}
 .hide{
 display: none !important;
 }
@@ -324,7 +326,7 @@ display: none !important;
 
 
 @media screen and (max-width: 600px) {
-  .container {
+    .container {
     padding: 0 15px;
   }
   .editor-column {
@@ -337,9 +339,6 @@ display: none !important;
     width: 100%;
     margin-top: 0;
   }
-}
-
-@media screen and (max-width: 600px) {
   .btns-box2 button, .file-btn {
     font-size: 0;
     padding: 7px;
@@ -363,7 +362,7 @@ display: none !important;
 <nav>
 <div class="nav-links">
 <div class="nav-left">
-<a href="index.html" class="logo"><img src="imgs/unminify-js-logo.webp" alt="unminify-js.com logo"></a>
+<a href="index.html" class="logo"><img src="imgs/code-unminifier-logo.png" alt="code-unminifier-logo"></a>
 </div>
 <div class="nav-right">
 <a href="#benefits" class="nav-item">Benefits ❤️</a>
@@ -371,115 +370,127 @@ display: none !important;
 </div>
 </nav>
 <div class="container header-content">
-  <h1>Free Online JavaScript Unminifier Tool</h1>
-  <p>Unminify and beautify your compressed JavaScript code instantly using our fast, browser-based JS formatter. No signup, no uploads 100% free.</p>
-</div>
+  <h1>Unminify JS, HTML, CSS, JSON, XML Online</h1>
+  <p>Unminify and beautify your compressed JS, HTML, CSS, JSON, or XML instantly using our browser-based formatter. <br> Free, Private & Fast.</p>
 </div>
 </header>
 
 <main>
+
 <section class="container">
 <div style="display: flex; justify-content: space-between; min-height: 30px; max-height:30px;">
 <div class="tab-buttons">
-<button id="tabInput" onclick="showTab('input')">Input</button>
-<button id="tabOutput" onclick="showTab('output')" style="border-left: none;">Output</button>
+<button id="tabInput" onclick="showTab('input')" >Input</button>
+<button id="tabOutput" onclick="showTab('output')" style="border-left: none;" >Output</button>
 </div>
 <div class="layout-buttons">
-<button id="singleBtn" onclick="setLayout('single')" style="display: none;">Single View</button>
-<button id="splitBtn" onclick="setLayout('dual')">Split View</button>
+<span class="input-type-text">Input Type: </span>
+<select id="forceLang" onchange="unminifyAuto()" aria-label="Force Language">
+  <option value="auto">Auto (AI)</option>
+  <option value="js">JS</option>
+  <option value="html">HTML</option>
+  <option value="css">CSS</option>
+  <option value="json">JSON</option>
+  <option value="xml">XML</option>
+</select>
+<button id="singleBtn" onclick="setLayout('single')" style="display: none;" >Single View</button>
+<button id="splitBtn" onclick="setLayout('dual')" >Split View</button>
 </div>
 </div>
 
-<div id="editorWrapper">
+<div id="editorWrapper" role="region">
 <div class="editor-column" id="inputColumn">
-<textarea id="inputEditor" placeholder="// Paste or type your minified JS code here..."></textarea>
+<label for="inputEditor" style="display:none;">Input Code</label>
+<textarea id="inputEditor" placeholder="// Paste or type your minified code here..."></textarea>
 <div id="inputSize" class="byte-indicator hide">0 Bytes</div>
 </div>
 
 <div class="editor-column" id="outputColumn">
 <button id="tabOutput-splitView" onclick="showTab('output')" style="display: none;">Output</button>
-<textarea id="outputEditor" placeholder="// Your unminified JS code will appear here..." style="display: none;"></textarea>
+<label for="outputEditor" style="display:none;">Unminified Output</label>
+<textarea id="outputEditor" placeholder="// Your unminified code will appear here..." style="display: none;"></textarea>
 <div id="outputSize" class="byte-indicator hide">0 Bytes</div>
 </div>
 </div>
 
 <div class="btns-container">
 <div class="btns-box1">
-<button id="unminifyBtn" onclick="unminify()" aria-label="Unminify Code">Unminify</button>
+<button id="unminifyBtn" onclick="unminifyAuto()" aria-label="Unminify Code">Unminify</button>
 <label for="tabSizeSelector">Tab Size:
 <input type="number" id="tabSizeSelector" value="4" min="1" max="8" style="width: 50px;" onchange="updateTabSize(this.value)">
 </label>
 </div>
 <div class="btns-box2">
-<button id="downloadBtn" onclick="saveCode()" style="display:none;"><img src="imgs/download.svg" width="15px" alt="download unminified code in javascript file button"> Download</button>
-<label class="file-btn"><img src="imgs/upload.svg" width="15px" alt="select javascript file for unminification"> Select File<input type="file" accept=".js" onchange="loadCode(event)"></label>
-<input type="file" accept=".js" onchange="loadCode(event)" style="display: none;">
-<button id="copyBtn" onclick="copyCode()" aria-label="Copy Output"><img src="imgs/copy.svg" width="15px" alt="copy unminified code"> Copy Output</button>
-<button onclick="clearCode()"><img src="imgs/clear.svg" width="15px" alt="clear input box"> Clear</button>
+<button id="downloadBtn" onclick="saveCode()" style="display:none;" aria-label="Download Output file" ><img src="imgs/download.svg" width="15px" alt="download output file icon"> Download</button>
+<label class="file-btn"><img src="imgs/upload.svg" width="15px" alt="upload icon"> Select File<input type="file" accept=".js,.html,.css,.json,.xml" onchange="loadCode(event)"></label>
+<button id="copyBtn" onclick="copyCode()" aria-label="Copy Output"><img src="imgs/copy.svg" width="15px" alt="copy output icon"> Copy Output</button>
+<button onclick="clearCode()" aria-label="clear feilds"><img src="imgs/clear.svg" width="15px" alt="clear feilds icon"> Clear</button>
 </div>
 </div>
-<div class="error" id="errorMsg" aria-live="polite">Error in javascript code</div>
 </section>
-
 <section class="container details-box">
-<h2>How to Use This Online JavaScript Unminifier</h2>
-<p>Using this free JavaScript Unminifier is quick and easy. Just paste your minified JS code into the input box, click the <strong>"Unminify"</strong> button, and get beautifully formatted JavaScript code instantly. This tool uses the powerful open-source <code>js-beautify</code> engine, which adds proper indentation, spacing, and line breaks to make your code readable. Everything runs in your browser, ensuring speed, privacy, and no data transfer to any server.</p>
+  <h2>How to Unminify JS, HTML, CSS, JSON, XML Online</h2>
+  <p>Using this tool is simple and efficient. Just paste your minified or compressed code into the editor and click the  "Unminify"  button. The tool will automatically detect the type of code  JavaScript, HTML, CSS, JSON, or XML  and format it using the appropriate engine. JavaScript, CSS, and HTML are beautified with <code>js-beautify</code>, while XML is handled with <code>vkbeautify</code>. JSON is parsed and formatted natively. Everything runs 100% locally in your browser  no code is uploaded  so your privacy is completely protected. Whether you're working with small snippets or large blocks of code, you’ll get fast, clean, and readable results.</p>
 
-<h2>Why Unminify JavaScript Code?</h2>
-<p>Minified JavaScript is often difficult to read, as it removes all unnecessary characters like spaces, line breaks, and variable names to reduce file size. This is great for performance, but not for debugging or learning. By unminifying JavaScript, developers can clearly understand how a script works, troubleshoot bugs, or learn from other developers’ code. Whether you're optimizing your own code or analyzing third-party scripts, unminifying helps you get full visibility into the logic.</p>
+  <h2>Why to use Code Beautifier?</h2>
+  <p>Minified code is difficult to read and nearly impossible to debug. It lacks indentation, spacing, and structure. This tool helps restore the original formatting, making it easier to understand logic, fix errors, or learn from existing scripts. You can use the  js unminify feature to reformat minified JavaScript, or the  html beautify function to reveal the layout structure of a web page. Similarly,  css beautify feature lets you inspect stylesheets, and  json unminify  and  xml beautify  allow you to work with structured data more clearly. These features make this tool ideal for debugging, code review, reverse engineering, and educational purposes.</p>
 
-<h2 id="benefits">Benefits of Our Browser-Based JavaScript Beautifier</h2>
-<p>This JS Unminifier tool is designed for speed, simplicity, and complete privacy. Because it works entirely in your browser, your code is never sent to any external server, making it 100% secure. It’s also lightning-fast since there’s no waiting for uploads or processing delays. Whether you're working on large projects or quick edits, this beautifier keeps your workflow smooth and efficient without compromising security or performance.</p>
+  <h2 id="benefits">Benefits of Our Browser-Based Code Formatter</h2>
+  <p>Unlike traditional desktop applications, this online unminifier works entirely in your browser with no installations or logins required. It’s fast, secure, and always available. The tool supports all major formats used in web development: JavaScript (JS), HyperText Markup Language (HTML), Cascading Style Sheets (CSS), JavaScript Object Notation (JSON), and Extensible Markup Language (XML). Its split and single-view options make code comparison easy, and byte indicators help you track file size before and after beautification.</p>
 
-<h2>JS Beautifier for Students, Developers, and Learners</h2>
-<p>This tool is perfect for anyone working with JavaScript. Students can use it to study well-written code examples, developers can debug compressed scripts, and hobby coders can improve their understanding of JavaScript structure. It makes messy one-line code human-friendly by reformatting functions, loops, and objects saving time and reducing eye strain. Plus, it’s free and works on any modern device or browser without setup.</p>
+  <h2>Perfect for Developers, Students, and Tech Enthusiasts</h2>
+  <p>This tool is designed with all user levels in mind. Beginners can use it to explore how web code is structured, while experienced developers will appreciate how quickly it reveals the logic behind compressed files. If you're studying how websites or applications are built, the tool  help you visualize how markup and styles work together. If you’re debugging a REST API, the  json unminify  function improves readability. For XML data, often used in configuration files or feeds. Whether you're a student analyzing code samples or a hobbyist editing a one-liner function, this formatter simplifies your workflow.</p>
 
-<h2>Advanced JavaScript Formatting Without a Code Editor</h2>
-<p>Not everyone wants to open a full code editor just to format a single JS file. With this online JavaScript Beautifier, you can instantly convert compressed scripts into structured code right from your browser. No installation, no login, and no learning curve just paste, click, and you're done. It also supports large files and handles tricky syntax gracefully, making it ideal for both beginners and pros looking for quick formatting.</p>
+  <h2>No Setup, No Sign-Up, Just Paste and Beautify</h2>
+  <p>Sometimes you just need a quick way to clean up a messy code block without opening an IDE or downloading a plugin. This web-based solution is perfect for those quick tasks. It supports  js, html, css, json and xml beautification. The interface is designed for speed and simplicity  just paste, click, and your unminified code is ready. And since nothing is stored or transmitted, your code stays safe and private at all times.</p>
 </section>
+<div id="errorMessage" aria-live="polite" style="color:red; font-size:0.8rem;"></div>
+
 </main>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Unminify JavaScript Code",
-  "operatingSystem": "All",
-  "applicationCategory": "DeveloperApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "browserRequirements": "Requires JavaScript",
-  "description": "Unminify minified JavaScript code online for free using a secure, fast, browser-based JS beautifier tool.",
-  "url": "https://unminify-js.com"
-}
-</script>
 
 <footer style="text-align:center; padding:20px 0; font-size:0.8rem; color:#888;">
-  © 2025 <a href="https://unminify-js.com" style="color: #888;">Unminify-JS.com</a> - All rights reserved.
-  <p style="font-size: 0.7rem; color: #aaa;">Built using open-source tools like js-beautify. This site helps developers instantly unminify JavaScript code online.</p>
+  © 2025 <a href="https://codeunminifier.com" style="color: #888;">codeunminifier.com</a> - All rights reserved.
+  <p style="font-size: 0.7rem; color: #aaa;">Built using open-source tools like js-beautify and vkbeautify. This site helps developers instantly unminify JavaScript, HTML, CSS, JSON, or XML code online.</p>
   <p style="font-size: 0.7rem; color: #aaa;">No file uploads. Fully client-side. Fast & private.</p>
 </footer>
 
+<script src="libs/beautify.js"></script>
+<script src="libs/beautify-html.js"></script>
+<script src="libs/beautify-css.js"></script>
+<script src="libs/vkbeautify.js"></script>
 
-
-<script defer src="https://cdn.jsdelivr.net/npm/js-beautify@1.14.0/js/lib/beautify.js"></script>
 <script>
+window.tabSize = parseInt(document.getElementById("tabSizeSelector").value);
 let currentTab = 'input';
 let view = 'single';
 let canCopy = true;
 const input = document.getElementById("inputEditor");
-const error = document.getElementById("errorMsg");
 const unminifyBtn = document.getElementById("unminifyBtn");
 
-function sanitizeInput(code) {
-    return code.replace(/<\/?script[^>]*>/gi, '');
+
+function detectLanguage(code) {
+  const trimmed = code.trim();
+  if (trimmed.startsWith('<?xml')) return 'xml';
+  try { JSON.parse(trimmed); return 'json'; } catch (e) {}
+
+  // Check for HTML before CSS
+  if (/<(html|!DOCTYPE|head|body|div|span|script|style|link|meta)[\s>]/i.test(trimmed)) return 'html';
+
+  if (
+    /^[\s\S]*:[\s\S]*;/.test(trimmed) &&
+    /^[^{]*{[^}]*}$/.test(trimmed) &&
+    !/function|=>/.test(trimmed.replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, ''))
+  ) return 'css';
+
+  if (/function|=>|var |let |const /.test(trimmed) || /[;{}()=]/.test(trimmed)) return 'js';
+
+  return 'unknown';
 }
-function isJavaScript(code) {
-    if (code.trim().startsWith("<") || code.trim().endsWith(">")) return false;
-    return /[{}();=]/.test(code);
-}
+
+
+
+
+
 function showTab(tab) {
     currentTab = tab;
     const inputEditor = document.getElementById("inputEditor");
@@ -503,46 +514,47 @@ function showTab(tab) {
         tab === 'output' ? outputSize.classList.remove("hide") : outputSize.classList.add("hide");
     }
 }
-input.addEventListener("input", () => {
-    let code = input.value;
-    code = sanitizeInput(code);
-    input.value = code;
 
-    if (code.trim() === '') {
-        error.style.display = "none";
-        unminifyBtn.disabled = true;
-    } else if (!isJavaScript(code)) {
-        error.style.display = "block";
-        unminifyBtn.disabled = true;
-    } else {
-        error.style.display = "none";
-        unminifyBtn.disabled = false;
+function unminifyAuto() {
+  const input = document.getElementById("inputEditor").value.trim();
+  if (!input) return;
+
+  const byteIndicator = document.querySelectorAll(".byte-indicator");
+  byteIndicator.forEach(i => i.classList.remove("hide"));
+
+  const outputEditor = document.getElementById("outputEditor");
+  const errorDiv = document.getElementById("errorMessage");
+
+  const force = document.getElementById("forceLang").value;
+  const type = (force !== "auto") ? force : detectLanguage(input);
+
+  let output = "";
+  const tabSize = window.tabSize || 4;
+  
+  try {
+    switch (type) {
+      case "js": output = js_beautify(input, { indent_size: tabSize }); break;
+      case "html": output = html_beautify(input, { indent_size: tabSize }); break;
+      case "css": output = css_beautify(input, { indent_size: tabSize }); break;
+      case "json": output = JSON.stringify(JSON.parse(input), null, tabSize); break;
+      case "xml": output = vkbeautify.xml(input, tabSize); break;
+      default: output = "Error: Could not detect language or unsupported format.";
     }
-});
+  } catch (e) {
+    output = `Error: ${e.message || 'Invalid input or formatting failed.'}`;
+    errorDiv.textContent = output;
+  }
 
-function unminify() {
-    var byteIndicator = document.querySelectorAll(".byte-indicator");
-    byteIndicator.forEach(i => i.classList.remove("hide"));
-
-    const inputRaw = document.getElementById("inputEditor").value;
-    const sanitized = sanitizeInput(inputRaw);
-    const tabSize = parseInt(document.getElementById("tabSizeSelector").value);
-
-    const output = js_beautify(sanitized, {
-        indent_size: tabSize,
-        space_in_empty_paren: true
-    });
-
-    document.getElementById("outputEditor").value = output;
-    updateByteIndicators();
-    showTab('output');
-    document.getElementById("downloadBtn").style.display = "inline-block";
+  outputEditor.value = output;
+  showTab('output');
+  updateByteIndicators();
+  document.getElementById("downloadBtn").style.display = "inline-block";
 }
+
 
 function clearCode() {
     document.getElementById("inputEditor").value = '';
     document.getElementById("outputEditor").value = '';
-    document.getElementById("unminifyBtn").disabled = true;
     showTab('input');
     var byteIndicator = document.querySelectorAll(".byte-indicator");
     byteIndicator.forEach(i => i.classList.remove("hide"));
@@ -570,7 +582,8 @@ function copyCode() {
 }
 
 function updateTabSize(value) {
-    const size = parseInt(value);
+  const tabSize = parseInt(value);
+  window.tabSize = tabSize;
 }
 
 function setLayout(type) {
@@ -607,38 +620,32 @@ function updateByteIndicators() {
 }
 
 function saveCode() {
-    const code = document.getElementById('outputEditor').value;
-    const blob = new Blob([code], {
-        type: 'text/javascript'
-    });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'unminified-code.js';
-    a.click();
+  const code = document.getElementById('outputEditor').value;
+  const forcedLang = document.getElementById("forceLang").value;
+  const type = (forcedLang !== "auto") ? forcedLang : detectLanguage(code);
+  const extMap = { js: 'js', html: 'html', css: 'css', json: 'json', xml: 'xml' };
+  const ext = extMap[type] || 'txt';
+  const blob = new Blob([code], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `unminified-code.${ext}`;
+  a.click();
 }
+
 
 function loadCode(event) {
     const reader = new FileReader();
     reader.onload = function(e) {
-        const input = e.target.result;
-        document.getElementById('inputEditor').value = sanitizeInput(input);
-        checkInputType(input);
+        const inputText = e.target.result;
+        document.getElementById("inputEditor").value = inputText; // Set input
         updateByteIndicators();
     };
     reader.readAsText(event.target.files[0]);
 }
 
-function checkInputType(inputCode) {
-    const unminifyBtn = document.getElementById("unminifyBtn");
-    if (!isJavaScript(inputCode)) {
-        unminifyBtn.disabled = true;
-    } else {
-        unminifyBtn.disabled = false;
-    }
-}
+
 document.getElementById("inputEditor").addEventListener("input", function() {
     updateByteIndicators();
-    checkInputType(this.value);
 });
 document.getElementById("outputEditor").addEventListener("input", updateByteIndicators);
 window.addEventListener("load", () => {
@@ -649,27 +656,40 @@ window.addEventListener("load", () => {
         document.getElementById('splitBtn').style.display = 'none';
     }
 });
+
+const forced = document.getElementById("forceLang").value;
+const type = forced !== "auto" ? forced : detectLanguage(input.value);
+window.addEventListener("keydown", (e) => {
+  if (e.ctrlKey && e.key === "Enter") unminifyAuto();
+});
+
 </script>
-<script type="application/ld+json">
+  <script type="application/ld+json">
 {
-"@context": "https://schema.org",
-"@type": "FAQPage",
-"mainEntity": [{
-"@type": "Question",
-"name": "Can this tool unminify obfuscated JavaScript?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "It can format and beautify code, but advanced obfuscation may need manual cleanup."
+  "@type": "Question",
+  "name": "Can I use this tool offline?",
+  "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. If you install it as a PWA, it can run offline."
+  }
+},
+{
+  "@type": "Question",
+  "name": "Does it support large files?",
+  "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It works well for most code files. However, performance may reduce slightly for very large files over 1MB."
+  }
+},
+{
+  "@type": "Question",
+  "name": "Which engines are used for beautifying?",
+  "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "JavaScript, CSS, and HTML use js-beautify. XML uses vkbeautify, and JSON is parsed natively."
+  }
 }
-}, {
-"@type": "Question",
-"name": "Is my code safe?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "Yes! All code is processed in your browser. Nothing is uploaded or stored."
-}
-}]
-}
-</script>
+
+  </script>
 </body>
 </html>
