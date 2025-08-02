@@ -2,6 +2,7 @@ window.tabSize = parseInt(document.getElementById("tabSizeSelector").value);
 let currentTab = 'input';
 let view = 'single';
 let canCopy = true;
+let fontLoaded = false;
 const input = document.getElementById("inputEditor");
 const output = document.getElementById("outputEditor");
 
@@ -212,3 +213,4 @@ scripts.forEach(src => {
   document.body.appendChild(s);
 });
 });
+
