@@ -2,7 +2,6 @@ window.tabSize = parseInt(document.getElementById("tabSizeSelector").value);
 let currentTab = 'input';
 let view = 'single';
 let canCopy = true;
-let fontLoaded = false;
 const input = document.getElementById("inputEditor");
 const output = document.getElementById("outputEditor");
 
@@ -178,17 +177,6 @@ input.addEventListener("input", () => {
   input.style.backgroundColor = "";
   input.removeAttribute("title");
   updateByteIndicators();
-
-  if (!fontLoaded) {
-    const font = new FontFace('PT Mono', 'url(../fonts/PTMono-Regular.ttf)');
-    font.load().then(loadedFont => {
-      document.fonts.add(loadedFont);
-      input.style.fontFamily = "'PT Mono', monospace";
-      fontLoaded = true;
-    }).catch(err => {
-      console.error("Font load failed:", err);
-    });
-  }
 });
 
 output.addEventListener("input", updateByteIndicators);
@@ -199,21 +187,29 @@ window.addEventListener("keydown", (e) => {
   if (e.ctrlKey && e.key === "Enter") unminifyAuto();
 });
 
-document.addEventListener('click', function loadScriptsOnce() {
-document.removeEventListener('click', loadScriptsOnce);
+document.addEventListener('click', function loadResourcesOnce() {
+  document.removeEventListener('click', loadResourcesOnce);
+  const scripts = [
+    'js/beautify.js',
+    'js/beautify-html.js',
+    'js/beautify-css.js',
+    'js/vkbeautify.js'
+  ];
 
-const scripts = [
-  'js/beautify.js',
-  'js/beautify-html.js',
-  'js/beautify-css.js',
-  'js/vkbeautify.js'
-];
+  scripts.forEach(src => {
+    const s = document.createElement('script');
+    s.src = src;
+    document.body.appendChild(s);
+  });
+  const style = document.createElement('style');
+  style.textContent = `
+    @font-face {
+      font-family: 'PT Mono';
+      src: url('../fonts/PTMono-Regular.ttf') format('truetype');
+    }
+  `;
+  document.head.appendChild(style);
+});
 
-scripts.forEach(src => {
-  const s = document.createElement('script');
-  s.src = src;
-  document.body.appendChild(s);
-});
-});
 
 
