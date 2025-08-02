@@ -86,6 +86,8 @@ function unminifyAuto() {
 }
 
 function clearCode() {
+  input.style.backgroundColor = "";
+  input.removeAttribute("title");
   document.getElementById("inputEditor").value = '';
   document.getElementById("outputEditor").value = '';
   showTab('input');
@@ -213,4 +215,5 @@ scripts.forEach(src => {
   document.body.appendChild(s);
 });
 });
+
 
