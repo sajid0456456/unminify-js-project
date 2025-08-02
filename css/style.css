@@ -8,11 +8,6 @@ body {
 font-family: 'arial', sans-serif;
 word-spacing: 1px;
 }
-@font-face {
-  font-family: 'PT Mono';
-  src: url('../fonts/PTMono-Regular.ttf') format('truetype');
-}
-
 h1, h2{
 font-size: 1.4rem;
 color: #363636;
