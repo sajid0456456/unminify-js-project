@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,144 +26,135 @@
   <meta name="twitter:title" content="Unminify Code Online - Beautify Any Code Instantly" />
   <meta name="twitter:description" content="Beautify JS, HTML, CSS, JSON, XML instantly with our browser-based unminifier." />
   <meta name="twitter:image" content="https://codeunminifier.com/imgs/codeunminifier-preview.png" />
-  
+
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<header>
-  <nav>
-    <div class="nav-links">
-      <div class="nav-left">
-        <a href="index.html" class="logo"><img src="imgs/code-unminifier-logo.webp" alt="code-unminifier-logo"></a>
+  <header>
+    <nav>
+      <div class="nav-links">
+        <div class="nav-left">
+          <a href="index.html" class="logo"><img src="imgs/code-unminifier-logo.webp" alt="code-unminifier-logo"></a>
+        </div>
+        <div class="nav-right">
+          <a href="#benefits" class="nav-item">Benefits ❤️</a>
+        </div>
       </div>
-      <div class="nav-right">
-        <a href="#benefits" class="nav-item">Benefits ❤️</a>
+    </nav>
+    <div class="hero">
+      <div class="header-content">
+        <h1>Unminify JS, HTML, CSS, JSON, XML Online</h1>
+        <p>Unminify and beautify your compressed JS, HTML, CSS, JSON, or XML instantly using our browser-based formatter. <br> Free, Private & Fast.</p>
       </div>
     </div>
-  </nav>
-  <div class="hero">
-    <div class="header-content">
-      <h1>Unminify JS, HTML, CSS, JSON, XML Online</h1>
-      <p>Unminify and beautify your compressed JS, HTML, CSS, JSON, or XML instantly using our browser-based formatter. <br> Free, Private & Fast.</p>
-    </div>
-  </div>
-</header>
+  </header>
 
-<main class="grid-layout">
-  <div class="top-middle container">
-    <div class="editing-region">
-      <div class="region-nav" style="display: flex; justify-content: space-between; min-height: 30px; max-height:30px;">
-        <div class="tab-buttons">
-        <button id="tabInput" onclick="showTab('input')" >Input</button>
-        <button id="tabOutput" onclick="showTab('output')" style="border-left: none;" >Output</button>
-        </div>
-        <div class="layout-buttons">
-        <span class="input-type-text">Input Type: </span>
-        <select id="forceLang" onchange="unminifyAuto()" aria-label="Force Language">
-          <option value="auto">Auto (AI)</option>
-          <option value="js">JS</option>
-          <option value="html">HTML</option>
-          <option value="css">CSS</option>
-          <option value="json">JSON</option>
-          <option value="xml">XML</option>
-        </select>
-        <button id="singleBtn" onclick="setLayout('single')" style="display: none;" >Single View</button>
-        <button id="splitBtn" onclick="setLayout('dual')" >Split View</button>
+  <main class="grid-layout">
+    <div class="top-middle container">
+      <div class="editing-region">
+        <div class="region-nav" style="display: flex; justify-content: space-between; min-height: 30px; max-height:30px;">
+          <div class="tab-buttons">
+            <button id="tabInput" onclick="showTab('input')">Input</button>
+            <button id="tabOutput" onclick="showTab('output')" style="border-left: none;">Output</button>
+          </div>
+          <div class="layout-buttons">
+            <span class="input-type-text">Input Type: </span>
+            <select id="forceLang" onchange="unminifyAuto()" aria-label="Force Language">
+              <option value="auto">Auto (AI)</option>
+              <option value="js">JS</option>
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="json">JSON</option>
+              <option value="xml">XML</option>
+            </select>
+            <button id="singleBtn" onclick="setLayout('single')" style="display: none;">Single View</button>
+            <button id="splitBtn" onclick="setLayout('dual')">Split View</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div id="editorWrapper">
-      <div class="editor-column" id="inputColumn">
-        <label for="inputEditor" style="display:none;">Input Code</label>
-        <textarea id="inputEditor" spellcheck="false" placeholder="// Paste or type your minified code here..."></textarea>
-        <div id="inputSize" class="byte-indicator hide">0 Bytes</div>
-      </div>
-      <div class="editor-column" id="outputColumn">
-        <button id="tabOutput-splitView" onclick="showTab('output')" style="display: none;">Output</button>
-        <label for="outputEditor" style="display:none;">Unminified Output</label>
-        <textarea id="outputEditor" spellcheck="false" placeholder="// Your unminified code will appear here..."
-          readonly
-          onkeydown="return false"
-          onpaste="return false">
+      <div id="editorWrapper">
+        <div class="editor-column" id="inputColumn">
+          <label for="inputEditor" style="display:none;">Input Code</label>
+          <textarea id="inputEditor" spellcheck="false" placeholder="// Paste or type your minified code here..."></textarea>
+          <div id="inputSize" class="byte-indicator hide">0 Bytes</div>
+        </div>
+        <div class="editor-column" id="outputColumn">
+          <button id="tabOutput-splitView" onclick="showTab('output')" style="display: none;">Output</button>
+          <label for="outputEditor" style="display:none;">Unminified Output</label>
+          <textarea id="outputEditor" spellcheck="false" placeholder="// Your unminified code will appear here..." readonly onkeydown="return false" onpaste="return false">
         </textarea>
-        <div id="outputSize" class="byte-indicator hide">0 Bytes</div>
+          <div id="outputSize" class="byte-indicator hide">0 Bytes</div>
+        </div>
+      </div>
+      <div class="btns-container">
+        <div class="btns-box1">
+          <button id="unminifyBtn" onclick="unminifyAuto()" aria-label="Unminify Code">Unminify</button>
+          <label for="tabSizeSelector">Tab Size:
+            <input type="number" id="tabSizeSelector" value="2" min="1" max="8" style="width: 50px;" onchange="updateTabSize(this.value)">
+          </label>
+        </div>
+        <div class="btns-box2">
+          <button id="downloadBtn" onclick="saveCode()" style="display:none;" aria-label="Download Output file"><img src="imgs/download.svg" width="15px" alt="download output file icon"> Download</button>
+          <label class="file-btn"><span class="center-it"><img src="imgs/upload.svg" width="15px" alt="upload icon"> Select File</span><input type="file" accept=".js,.html,.css,.json,.xml" onchange="loadCode(event)"></label>
+          <button id="copyBtn" onclick="copyCode()" aria-label="Copy Output"><img src="imgs/copy.svg" width="15px" alt="copy output icon"> Copy Output</button>
+          <button onclick="clearCode()" aria-label="clear feilds"><img src="imgs/clear.svg" width="15px" alt="clear feilds icon"> Clear</button>
+        </div>
       </div>
     </div>
-    <div class="btns-container">
-      <div class="btns-box1">
-        <button id="unminifyBtn" onclick="unminifyAuto()" aria-label="Unminify Code">Unminify</button>
-        <label for="tabSizeSelector">Tab Size:
-        <input type="number" id="tabSizeSelector" value="2" min="1" max="8" style="width: 50px;" onchange="updateTabSize(this.value)">
-        </label>
+    <div class="bottom-middle container">
+      <div class="text-content">
+        <h2>How to Unminify JS, HTML, CSS, JSON, XML Online</h2>
+        <p>Using this tool is simple and efficient. Just paste your minified or compressed code into the editor and click the "Unminify" button. The tool will automatically detect the type of code JavaScript, HTML, CSS, JSON, or XML and format it using the appropriate engine. JavaScript, CSS, and HTML are beautified with <code>js-beautify</code>, while XML is handled with <code>vkbeautify</code>. JSON is parsed and formatted natively. Everything runs 100% locally in your browser no code is uploaded so your privacy is completely protected. Whether you're working with small snippets or large blocks of code, you’ll get fast, clean, and readable results.</p>
+
+        <h2>Why to use Code Beautifier?</h2>
+        <p>Minified code is difficult to read and nearly impossible to debug. It lacks indentation, spacing, and structure. This tool helps restore the original formatting, making it easier to understand logic, fix errors, or learn from existing scripts. You can use the js unminify feature to reformat minified JavaScript, or the html beautify function to reveal the layout structure of a web page. Similarly, css beautify feature lets you inspect stylesheets, and json unminify and xml beautify allow you to work with structured data more clearly. These features make this tool ideal for debugging, code review, reverse engineering, and educational purposes.</p>
+
+        <h2 id="benefits">Benefits of Our Browser-Based Code Formatter</h2>
+        <p>Unlike traditional desktop applications, this online unminifier works entirely in your browser with no installations or logins required. It’s fast, secure, and always available. The tool supports all major formats used in web development: JavaScript (JS), HyperText Markup Language (HTML), Cascading Style Sheets (CSS), JavaScript Object Notation (JSON), and Extensible Markup Language (XML). Its split and single-view options make code comparison easy, and byte indicators help you track file size before and after beautification.</p>
+
+        <h2>Perfect for Developers, Students, and Tech Enthusiasts</h2>
+        <p>This tool is designed with all user levels in mind. Beginners can use it to explore how web code is structured, while experienced developers will appreciate how quickly it reveals the logic behind compressed files. If you're studying how websites or applications are built, the tool help you visualize how markup and styles work together. If you’re debugging a REST API, the json unminify function improves readability. For XML data, often used in configuration files or feeds. Whether you're a student analyzing code samples or a hobbyist editing a one-liner function, this formatter simplifies your workflow.</p>
+
+        <h2>No Setup, No Sign-Up, Just Paste and Beautify</h2>
+        <p>Sometimes you just need a quick way to clean up a messy code block without opening an IDE or downloading a plugin. This web-based solution is perfect for those quick tasks. It supports js, html, css, json and xml beautification. The interface is designed for speed and simplicity just paste, click, and your unminified code is ready. And since nothing is stored or transmitted, your code stays safe and private at all times.</p>
       </div>
-      <div class="btns-box2">
-        <button id="downloadBtn" onclick="saveCode()" style="display:none;" aria-label="Download Output file" ><img src="imgs/download.svg" width="15px" alt="download output file icon"> Download</button>
-        <label class="file-btn"><span class="center-it"><img src="imgs/upload.svg" width="15px" alt="upload icon"> Select File</span><input type="file" accept=".js,.html,.css,.json,.xml" onchange="loadCode(event)"></label>
-        <button id="copyBtn" onclick="copyCode()" aria-label="Copy Output"><img src="imgs/copy.svg" width="15px" alt="copy output icon"> Copy Output</button>
-        <button onclick="clearCode()" aria-label="clear feilds"><img src="imgs/clear.svg" width="15px" alt="clear feilds icon"> Clear</button>
-      </div>
+      <div id="errorMessage" aria-live="polite" style="color:red; font-size:0.8rem;"></div>
     </div>
-  </div>
-  <div class="bottom-middle container">
-    <div class="text-content">
-      <h2>How to Unminify JS, HTML, CSS, JSON, XML Online</h2>
-      <p>Using this tool is simple and efficient. Just paste your minified or compressed code into the editor and click the  "Unminify"  button. The tool will automatically detect the type of code  JavaScript, HTML, CSS, JSON, or XML  and format it using the appropriate engine. JavaScript, CSS, and HTML are beautified with <code>js-beautify</code>, while XML is handled with <code>vkbeautify</code>. JSON is parsed and formatted natively. Everything runs 100% locally in your browser  no code is uploaded  so your privacy is completely protected. Whether you're working with small snippets or large blocks of code, you’ll get fast, clean, and readable results.</p>
+    <div class="left-ad"></div>
+    <div class="right-ad"></div>
+  </main>
+  <footer style="text-align:center; padding:20px 0; font-size:0.8rem; color:#888;">
+    © <span id="year"></span> <a href="https://codeunminifier.com" style="color: #888;">CodeUnminifier.com</a> - All rights reserved.
+    <p style="font-size: 0.8rem; color: #aaa;">Built using open-source tools like js-beautify and vkbeautify. This site helps developers instantly unminify JavaScript, HTML, CSS, JSON, or XML code online.</p>
+    <p style="font-size: 0.8rem; color: #aaa;">No file uploads. Fully client-side. Fast & private.</p>
+  </footer>
 
-      <h2>Why to use Code Beautifier?</h2>
-      <p>Minified code is difficult to read and nearly impossible to debug. It lacks indentation, spacing, and structure. This tool helps restore the original formatting, making it easier to understand logic, fix errors, or learn from existing scripts. You can use the  js unminify feature to reformat minified JavaScript, or the  html beautify function to reveal the layout structure of a web page. Similarly,  css beautify feature lets you inspect stylesheets, and  json unminify  and  xml beautify  allow you to work with structured data more clearly. These features make this tool ideal for debugging, code review, reverse engineering, and educational purposes.</p>
-
-      <h2 id="benefits">Benefits of Our Browser-Based Code Formatter</h2>
-      <p>Unlike traditional desktop applications, this online unminifier works entirely in your browser with no installations or logins required. It’s fast, secure, and always available. The tool supports all major formats used in web development: JavaScript (JS), HyperText Markup Language (HTML), Cascading Style Sheets (CSS), JavaScript Object Notation (JSON), and Extensible Markup Language (XML). Its split and single-view options make code comparison easy, and byte indicators help you track file size before and after beautification.</p>
-
-      <h2>Perfect for Developers, Students, and Tech Enthusiasts</h2>
-      <p>This tool is designed with all user levels in mind. Beginners can use it to explore how web code is structured, while experienced developers will appreciate how quickly it reveals the logic behind compressed files. If you're studying how websites or applications are built, the tool  help you visualize how markup and styles work together. If you’re debugging a REST API, the  json unminify  function improves readability. For XML data, often used in configuration files or feeds. Whether you're a student analyzing code samples or a hobbyist editing a one-liner function, this formatter simplifies your workflow.</p>
-
-      <h2>No Setup, No Sign-Up, Just Paste and Beautify</h2>
-      <p>Sometimes you just need a quick way to clean up a messy code block without opening an IDE or downloading a plugin. This web-based solution is perfect for those quick tasks. It supports  js, html, css, json and xml beautification. The interface is designed for speed and simplicity  just paste, click, and your unminified code is ready. And since nothing is stored or transmitted, your code stays safe and private at all times.</p>
-    </div>
-    <div id="errorMessage" aria-live="polite" style="color:red; font-size:0.8rem;"></div>
-  </div>
-  <div class="left-ad"></div>
-  <div class="right-ad"></div>
-</main>
-<footer style="text-align:center; padding:20px 0; font-size:0.8rem; color:#888;">
-  © <span id="year"></span> <a href="https://codeunminifier.com" style="color: #888;">CodeUnminifier.com</a> - All rights reserved.
-  <p style="font-size: 0.8rem; color: #aaa;">Built using open-source tools like js-beautify and vkbeautify. This site helps developers instantly unminify JavaScript, HTML, CSS, JSON, or XML code online.</p>
-  <p style="font-size: 0.8rem; color: #aaa;">No file uploads. Fully client-side. Fast & private.</p>
-</footer>
-
-<script src="js/custom.js"></script>
-<script type="application/ld+json">
-{
-  "@type": "Question",
-  "name": "Can I use this tool offline?",
-  "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Yes. If you install it as a PWA, it can run offline."
-  }
-},
-{
-  "@type": "Question",
-  "name": "Does it support large files?",
-  "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "It works well for most code files. However, performance may reduce slightly for very large files over 1MB."
-  }
-},
-{
-  "@type": "Question",
-  "name": "Which engines are used for beautifying?",
-  "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "JavaScript, CSS, and HTML use js-beautify. XML uses vkbeautify, and JSON is parsed natively."
-  }
-}
-</script>
+  <script src="js/custom.js"></script>
+  <script type="application/ld+json">
+    {
+      "@type": "Question",
+      "name": "Can I use this tool offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If you install it as a PWA, it can run offline."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Does it support large files?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It works well for most code files. However, performance may reduce slightly for very large files over 1MB."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Which engines are used for beautifying?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JavaScript, CSS, and HTML use js-beautify. XML uses vkbeautify, and JSON is parsed natively."
+      }
+    }
+  </script>
 </body>
+
 </html>
-
-
-
-
-
-
