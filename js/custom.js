@@ -52,7 +52,7 @@ function unminifyAuto() {
   const force = document.getElementById("forceLang").value;
   const type = (force !== "auto") ? force : detectLanguage(input);
   let output = "";
-  const tabSize = window.tabSize || 4;
+  const tabSize = window.tabSize || 2;
   document.getElementById("inputEditor").style.backgroundColor = "";
   document.getElementById("inputEditor").removeAttribute("title");
 
@@ -210,6 +210,7 @@ document.addEventListener('click', function loadResourcesOnce() {
   `;
   document.head.appendChild(style);
 });
+
 
 
 
