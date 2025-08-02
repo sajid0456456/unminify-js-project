@@ -175,6 +175,17 @@ input.addEventListener("input", () => {
   input.style.backgroundColor = "";
   input.removeAttribute("title");
   updateByteIndicators();
+
+  if (!fontLoaded) {
+    const font = new FontFace('PT Mono', 'url(../fonts/PTMono-Regular.ttf)');
+    font.load().then(loadedFont => {
+      document.fonts.add(loadedFont);
+      input.style.fontFamily = "'PT Mono', monospace";
+      fontLoaded = true;
+    }).catch(err => {
+      console.error("Font load failed:", err);
+    });
+  }
 });
 
 output.addEventListener("input", updateByteIndicators);
@@ -183,4 +194,21 @@ const forced = document.getElementById("forceLang").value;
 const type = forced !== "auto" ? forced : detectLanguage(input.value);
 window.addEventListener("keydown", (e) => {
   if (e.ctrlKey && e.key === "Enter") unminifyAuto();
+});
+
+document.addEventListener('click', function loadScriptsOnce() {
+document.removeEventListener('click', loadScriptsOnce);
+
+const scripts = [
+  'js/beautify.js',
+  'js/beautify-html.js',
+  'js/beautify-css.js',
+  'js/vkbeautify.js'
+];
+
+scripts.forEach(src => {
+  const s = document.createElement('script');
+  s.src = src;
+  document.body.appendChild(s);
+});
 });
