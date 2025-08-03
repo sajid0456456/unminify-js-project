@@ -29,8 +29,10 @@ function showTab(tab) {
   const tabOutput = document.getElementById("tabOutput");
   const inputSize = document.getElementById("inputSize");
   const outputSize = document.getElementById("outputSize");
-  inputEditor.style.display = tab === 'input' || view === 'dual' ? 'block' : 'none';
-  outputEditor.style.display = tab === 'output' || view === 'dual' ? 'block' : 'none';
+  inputEditor.style.display = tab === 'input' || view === 'dual' ? 'flex' : 'none';
+  outputEditor.style.display = tab === 'output' || view === 'dual' ? 'flex' : 'none';
+
+
   tabInput.style.background = tab === 'input' ? '#f5f5f5' : '#fff';
   tabOutput.style.background = tab === 'output' ? '#f5f5f5' : '#fff';
   if (view === 'dual') {
