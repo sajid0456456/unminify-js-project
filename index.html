@@ -89,7 +89,7 @@
       </div>
       <div class="btns-container">
         <div class="btns-box1">
-          <button id="unminifyBtn" onclick="unminifyAuto()" aria-label="Unminify Code">Unminify</button>
+          <button id="unminifyBtn" onclick="unminifyAuto()" aria-label="Unminify Code">Unminify <img src="imgs/loading.svg" class="hide" width="15px" alt="loading"></button>
           <label for="tabSizeSelector">Tab Size:
             <input type="number" id="tabSizeSelector" value="2" min="1" max="8" style="width: 50px;" onchange="updateTabSize(this.value)">
           </label>
@@ -97,7 +97,11 @@
         <div class="btns-box2">
           <button id="downloadBtn" onclick="saveCode()" style="display:none;" aria-label="Download Output file"><img src="imgs/download.svg" width="15px" alt="download output file icon"> Download</button>
           <label class="file-btn"><span class="center-it"><img src="imgs/upload.svg" width="15px" alt="upload icon"> Select File</span><input type="file" accept=".js,.html,.css,.json,.xml" onchange="loadCode(event)"></label>
-          <button id="copyBtn" onclick="copyCode()" aria-label="Copy Output"><img src="imgs/copy.svg" width="15px" alt="copy output icon"> Copy Output</button>
+           <button id="copyBtn" onclick="copyCode()" aria-label="Copy Output">
+  <img src="imgs/copy.svg" width="15px" alt="copy output icon">
+  <span>Copy Output</span>
+</button>
+
           <button onclick="clearCode()" aria-label="clear feilds"><img src="imgs/clear.svg" width="15px" alt="clear feilds icon"> Clear</button>
         </div>
       </div>
@@ -129,7 +133,6 @@
     <p style="font-size: 0.8rem; color: #aaa;">Built using open-source tools like js-beautify and vkbeautify. This site helps developers instantly unminify JavaScript, HTML, CSS, JSON, or XML code online.</p>
     <p style="font-size: 0.8rem; color: #aaa;">No file uploads. Fully client-side. Fast & private.</p>
   </footer>
-
   <script src="js/custom.js"></script>
   <script type="application/ld+json">
     {
