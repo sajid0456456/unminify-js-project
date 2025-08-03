@@ -150,6 +150,11 @@ textarea {
 textarea:focus {
   outline: none;
 }
+textarea::placeholder {
+  font-family: 'arial', sans-serif;
+  font-size: 0.9rem;
+}
+
 
 .tab-buttons,
 .layout-buttons {
@@ -221,7 +226,7 @@ textarea:focus {
 
 .btns-box1 button,
 .btns-box2 button {
-  padding: 7px 6px;
+  padding: 7px 8px;
   border: none;
   border-radius: 2px;
   cursor: pointer;
