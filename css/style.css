@@ -264,6 +264,8 @@ textarea::placeholder {
 
 .btns-box1 label {
   margin-left: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .file-btn {
