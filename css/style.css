@@ -1,4 +1,4 @@
-* {
+    * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -104,10 +104,19 @@ nav {
 .container {
   margin-bottom: 50px;
 }
+#editorWrapper {
+  min-height: 250px;
+  max-height: 250px;
+
+}
 
 .split-layout {
   display: flex;
   gap: 10px;
+}
+#inputEditor,
+#outputEditor {
+  min-height: 250px;
 }
 
 .split-layout #inputEditor,
