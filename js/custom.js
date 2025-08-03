@@ -1,25 +1,24 @@
+window.resourcesReady = false;
 window.tabSize = parseInt(document.getElementById("tabSizeSelector").value);
 let currentTab = 'input';
 let view = 'single';
 let canCopy = true;
+let forced;
+let type;
 const input = document.getElementById("inputEditor");
 const output = document.getElementById("outputEditor");
-
-outputEditor
 const unminifyBtn = document.getElementById("unminifyBtn");
-
+const unminifyBtnImg = unminifyBtn.querySelector("img");
 function detectLanguage(code) {
-  const trimmed = code.trim();
-  if (trimmed.startsWith('<?xml')) return 'xml';
-  try { JSON.parse(trimmed); return 'json'; } catch (e) {}
-  if (/<(html|!DOCTYPE|head|body|div|span|script|style|link|meta)[\s>]/i.test(trimmed)) return 'html';
-  if (
-    /^[\s\S]*:[\s\S]*;/.test(trimmed) &&
-    /^[^{]*{[^}]*}$/.test(trimmed) &&
-    !/function|=>/.test(trimmed.replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, ''))
-  ) return 'css';
-  if (/function|=>|var |let |const /.test(trimmed) || /[;{}()=]/.test(trimmed)) return 'js';
-  return 'unknown';
+  if (!window.hljs) return 'unknown';
+  const result = hljs.highlightAuto(code, ['javascript', 'css', 'xml', 'json']);
+  switch (result.language) {
+    case 'javascript': return 'js';
+    case 'json': return 'json';
+    case 'xml': return 'html';
+    case 'css': return 'css';
+    default: return 'unknown';
+  }
 }
 
 function showTab(tab) {
@@ -46,7 +45,20 @@ function showTab(tab) {
 function unminifyAuto() {
   const input = document.getElementById("inputEditor").value.trim();
   if (!input) return;
-  
+  if (unminifyBtn.disabled) return;
+  unminifyBtn.disabled = true;
+  unminifyBtnImg.classList.remove("hide");
+  setTimeout(() => { unminifyBtn.disabled = false; unminifyBtnImg.classList.add("hide") }, 200); // re-enable after 1s
+  if (!window.resourcesReady) {
+    unminifyBtnImg.classList.remove("hide");
+    const wait = setInterval(() => {
+      if (window.resourcesReady) {
+        clearInterval(wait);
+        unminifyAuto();
+      }
+    }, 1000);
+    return;
+  }
   const outputEditor = document.getElementById("outputEditor");
   const errorDiv = document.getElementById("errorMessage");
   const force = document.getElementById("forceLang").value;
@@ -55,7 +67,6 @@ function unminifyAuto() {
   const tabSize = window.tabSize || 2;
   document.getElementById("inputEditor").style.backgroundColor = "";
   document.getElementById("inputEditor").removeAttribute("title");
-
   try {
     switch (type) {
       case "js": output = js_beautify(input, { indent_size: tabSize }); break;
@@ -99,14 +110,15 @@ function copyCode() {
   if (!canCopy) return;
   const text = document.getElementById("outputEditor").value;
   navigator.clipboard.writeText(text).then(() => {
-      const btn = document.getElementById("copyBtn");
-      if (window.innerWidth > 600) {
-      btn.textContent = "Copied!";
+    const btn = document.getElementById("copyBtn");
+    const span = btn.querySelector("span");
+    if (!span) return;
+    if (window.innerWidth > 600) {
+      span.textContent = "Copied!";
       canCopy = false;
       setTimeout(() => {
-          btn.innerHTML = "<img src='imgs/copy.svg' width='15px' alt='copy unminified code'> Copy Output";
-          btn.disabled = false;
-          canCopy = true;
+        span.textContent = "Copy Output";
+        canCopy = true;
       }, 1000);
     }
   });
@@ -181,26 +193,57 @@ input.addEventListener("input", () => {
 
 output.addEventListener("input", updateByteIndicators);
 
-const forced = document.getElementById("forceLang").value;
-const type = forced !== "auto" ? forced : detectLanguage(input.value);
 window.addEventListener("keydown", (e) => {
   if (e.ctrlKey && e.key === "Enter") unminifyAuto();
 });
 
 document.addEventListener('click', function loadResourcesOnce() {
   document.removeEventListener('click', loadResourcesOnce);
-  const scripts = [
+
+  const localScripts = [
     'js/beautify.js',
     'js/beautify-html.js',
     'js/beautify-css.js',
     'js/vkbeautify.js'
   ];
 
-  scripts.forEach(src => {
-    const s = document.createElement('script');
-    s.src = src;
-    document.body.appendChild(s);
+  const highlightScripts = [
+    'js/highlight.js'
+  ];
+
+  function loadSequential(scripts, done) {
+    let i = 0;
+    function next() {
+      if (i >= scripts.length) return done();
+      const s = document.createElement('script');
+      s.src = scripts[i++];
+      s.onload = next;
+      document.body.appendChild(s);
+    }
+    next();
+  }
+
+  function loadLocal(callback) {
+    let loaded = 0;
+    localScripts.forEach(src => {
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = () => {
+        loaded++;
+        if (loaded === localScripts.length) callback();
+      };
+      document.body.appendChild(s);
+    });
+  }
+
+  loadLocal(() => {
+    loadSequential(highlightScripts, () => {
+      window.resourcesReady = true;
+      forced = document.getElementById("forceLang").value;
+      type = forced !== "auto" ? forced : detectLanguage(input.value);
+    });
   });
+
   const style = document.createElement('style');
   style.textContent = `
     @font-face {
@@ -210,7 +253,3 @@ document.addEventListener('click', function loadResourcesOnce() {
   `;
   document.head.appendChild(style);
 });
-
-
-
-
