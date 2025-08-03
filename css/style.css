@@ -267,7 +267,11 @@ textarea::placeholder {
   display: flex;
   align-items: center;
 }
-
+.btns-box2 .inner-btns {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 .file-btn {
   display: inline-block;
   background-color: #f5f5f5;
@@ -445,8 +449,8 @@ footer {
     width: 70%;
   }
 
-  .btns-box2 button,
-  .btns-box2 label {
+  .btns-box2 .inner-btns button,
+  .btns-box2 .inner-btns label {
     min-width: 32%;
     max-width: 32%;
     gap: 2px;
@@ -457,9 +461,13 @@ footer {
   .btns-box2 {
     margin-top: 15px;
     justify-content: space-between;
+     flex-direction: column-reverse;
     gap: 0;
   }
-
+.btns-box2 .inner-btns{
+    width: 100%;
+    justify-content: center;
+}
   .btns-box2 button img,
   .file-btn img {
     width: 18px;
