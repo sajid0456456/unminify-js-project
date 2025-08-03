@@ -441,12 +441,13 @@ footer {
     width: 70%;
   }
 
-  .btns-box1,
-  .btns-box2 {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  .btns-box2 button,
+  .btns-box2 label {
+    min-width: 32%;
+    max-width: 32%;
+    gap: 2px;
+    padding: 7px 0;
+    margin-bottom: 10px;
   }
 
   .btns-box2 {
