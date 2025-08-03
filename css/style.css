@@ -408,6 +408,10 @@ footer {
 }
 
 @media (max-width: 650px) {
+    nav{
+  box-shadow: 0 5px 5px #304ffe50;
+        
+    }
   .nav-links {
     justify-content: center;
   }
@@ -418,7 +422,7 @@ footer {
 
   .logo img {
     width: 300px;
-    margin: 8px auto;
+    margin: 5px auto;
   }
 
   #splitBtn {
