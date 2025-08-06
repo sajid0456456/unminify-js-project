@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://codeunminifier.com/sitemap.xml
+Sitemap: https://www.codeunminifier.com/sitemap.xml
