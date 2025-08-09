@@ -160,7 +160,8 @@ textarea:focus {
   outline: none;
 }
 textarea::placeholder {
-  font-family: 'arial', sans-serif;
+font-family: 'Courier New', Courier, monospace;
+letter-spacing: -1px;
   font-size: 0.9rem;
 }
 
