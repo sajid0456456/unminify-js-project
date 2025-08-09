@@ -255,3 +255,6 @@ document.addEventListener('click', function loadResourcesOnce() {
   `;
   document.head.appendChild(style);
 });
+
+//Setup year in the footer
+document.getElementById("year").textContent = new Date().getFullYear();
